@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LegacyFixer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">LegacyFixer</p>
+      <h1>Fix legacy code in seconds.</h1>
+      <p class="subtitle">
+        Paste an old dependency file, config, or code snippet. LegacyFixer shows what looks outdated,
+        risky, or repairable before anything is changed.
+      </p>
+    </section>
+
+    <section class="fixer-card">
+      <div class="toolbar">
+        <label class="upload">
+          Upload file
+          <input id="fileInput" type="file" accept=".txt,.py,.js,.json,.toml,.yml,.yaml,.md,.cfg,.ini,.html,.css">
+        </label>
+        <button id="sampleButton" type="button">Use sample</button>
+      </div>
+
+      <textarea id="inputText" spellcheck="false" placeholder="Paste legacy code, requirements.txt, package.json, or config here..."></textarea>
+
+      <button id="fixButton" class="primary" type="button">Fix it</button>
+
+      <section class="result">
+        <h2>Result</h2>
+        <pre id="resultBox">No result yet.</pre>
+      </section>
+    </section>
+
+    <section class="note">
+      <p>
+        Current beta: repository monitoring, queued maintenance jobs, dependency/security checks,
+        and controlled pull request creation through explicit repo settings.
+      </p>
+      <a href="mailto:hello@legacyfixer.ai">Request beta access</a>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
