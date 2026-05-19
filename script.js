@@ -13,19 +13,19 @@ fileInput.addEventListener("change", async () => {
   const file = fileInput.files?.[0];
   if (!file) return;
   inputText.value = await file.text();
-  resultBox.textContent = `Loaded ${file.name}. Ready to analyze.`;
+  resultBox.textContent = `Loaded ${file.name}. Ready for static dependency preview.`;
 });
 
 sampleButton.addEventListener("click", () => {
   inputText.value = sample;
-  resultBox.textContent = "Sample loaded. Click Fix it.";
+  resultBox.textContent = "Sample Python dependencies loaded. Click Preview dependency check.";
 });
 
 fixButton.addEventListener("click", () => {
   const text = inputText.value.trim();
 
   if (!text) {
-    resultBox.textContent = "Paste or upload something first.";
+    resultBox.textContent = "Paste or upload a Python dependency file first.";
     return;
   }
 
@@ -58,26 +58,26 @@ fixButton.addEventListener("click", () => {
 
 No demo rule matched this input.
 
-Beta engine status:
-- repository monitoring: available
-- queued maintenance jobs: available
-- dependency/security checks: available
-- controlled pull requests: available through repo settings
+Beta engine scope:
+- selected GitHub repositories
+- Python dependency/security checks
+- queued cloud scans
+- controlled pull requests through repo settings
 
-This public page is a static demo.`;
+This public page is a static dependency preview, not the live GitHub App.`;
     return;
   }
 
   const output = [
     "Analysis complete.",
     "",
-    "Suggested fixes:",
+    "Demo dependency findings:",
     ...findings.map((f, i) => `${i + 1}. ${f.issue} -> ${f.fix}`),
     "",
-    "Preview patch:",
+    "Potential dependency updates:",
     ...findings.map(f => `+ ${f.fix}`),
     "",
-    "No file was changed. This is a static preview."
+    "No repository or file was changed. This is a static dependency preview."
   ];
 
   resultBox.textContent = output.join("\n");

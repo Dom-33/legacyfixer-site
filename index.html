@@ -52,15 +52,15 @@
     <section class="fixer-card">
       <div class="toolbar">
         <label class="upload">
-          Upload file
-          <input id="fileInput" type="file" accept=".txt,.py,.js,.json,.toml,.yml,.yaml,.md,.cfg,.ini,.html,.css">
+          Upload dependency file
+          <input id="fileInput" type="file" accept=".txt,.in,.toml">
         </label>
         <button id="sampleButton" type="button">Use sample</button>
       </div>
 
-      <textarea id="inputText" spellcheck="false" placeholder="Paste legacy code, requirements.txt, package.json, or config here..."></textarea>
+      <textarea id="inputText" spellcheck="false" placeholder="Paste a Python dependency file such as requirements.txt or pyproject.toml..."></textarea>
 
-      <button id="fixButton" class="primary" type="button">Fix it</button>
+      <button id="fixButton" class="primary" type="button">Preview dependency check</button>
 
       <section class="result">
         <h2>Result</h2>
