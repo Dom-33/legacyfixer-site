@@ -10,11 +10,27 @@
   <main class="page">
     <section class="hero">
       <p class="eyebrow">LegacyFixer</p>
-      <h1>Controlled maintenance for legacy repositories.</h1>
+      <h1>Automated Python dependency security, without PR noise.</h1>
       <p class="subtitle">
-        LegacyFixer monitors selected GitHub repositories, runs dependency and security checks, 
-        and can prepare maintenance pull requests only when repo-level settings allow it.
+        LegacyFixer is a controlled GitHub App that scans selected repositories,
+        detects known vulnerable Python dependencies, and opens review-ready pull requests
+        only when repository settings allow it.
       </p>
+    </section>
+
+    <section class="trust-grid" aria-label="LegacyFixer beta safety model">
+      <article class="trust-card">
+        <h2>Audit-driven, not generative</h2>
+        <p>Uses pip-audit for known Python dependency vulnerabilities. LegacyFixer does not rewrite application logic.</p>
+      </article>
+      <article class="trust-card">
+        <h2>Review-first workflow</h2>
+        <p>Creates isolated branches and pull requests for human review. It does not merge automatically.</p>
+      </article>
+      <article class="trust-card">
+        <h2>No PR flooding</h2>
+        <p>Repository-level limits control how many automated pull requests can be open at once.</p>
+      </article>
     </section>
 
     <section class="fixer-card">
