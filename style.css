@@ -40,14 +40,14 @@ body {
 h1 {
   margin: 0;
   max-width: 760px;
-  font-size: clamp(32px, 4.8vw, 54px);
-  line-height: 1.08;
-  letter-spacing: -0.035em;
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
 }
 
 .subtitle {
   max-width: 660px;
-  margin: 24px 0 0;
+  margin: 20px 0 0;
   font-size: 20px;
   line-height: 1.45;
   color: var(--muted);
