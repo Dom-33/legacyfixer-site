@@ -137,9 +137,10 @@ pre {
   max-width: 680px;
 }
 
-.note a {
+.contact-email {
   color: var(--text);
   font-weight: 700;
+  white-space: nowrap;
 }
 
 @media (max-width: 720px) {
@@ -151,9 +152,10 @@ pre {
     display: block;
   }
 
-  .note a {
+  .contact-email {
     display: inline-block;
     margin-top: 14px;
+    white-space: normal;
   }
 }
 
