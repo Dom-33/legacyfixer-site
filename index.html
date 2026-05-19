@@ -49,23 +49,39 @@
       </p>
     </section>
 
-    <section class="fixer-card">
-      <div class="toolbar">
-        <label class="upload">
-          Upload dependency file
-          <input id="fileInput" type="file" accept=".txt,.in,.toml">
-        </label>
-        <button id="sampleButton" type="button">Use sample</button>
-      </div>
+    <section class="test-repository">
+      <h2>Test a repository</h2>
+      <p>
+        LegacyFixer is tested through GitHub repositories, not local file uploads.
+        Install the GitHub App on a selected repository. During the controlled beta,
+        repository settings and scan access are enabled for invited testers.
+      </p>
+      <a class="install-button" href="https://github.com/apps/legacy-code-fixer/installations/new">
+        Install GitHub App
+      </a>
+    </section>
 
-      <textarea id="inputText" spellcheck="false" placeholder="Paste a Python dependency file such as requirements.txt or pyproject.toml..."></textarea>
+    <section class="scan-example">
+      <h2>What beta testers see after a scan</h2>
+      <p>
+        LegacyFixer records scan status, result, queue wait, run time, and the reason
+        why a pull request was or was not opened.
+      </p>
 
-      <button id="fixButton" class="primary" type="button">Preview dependency check</button>
+      <dl class="scan-status">
+        <div><dt>Latest job ID</dt><dd>example</dd></div>
+        <div><dt>Trigger</dt><dd>manual</dd></div>
+        <div><dt>Status</dt><dd>success</dd></div>
+        <div><dt>Result</dt><dd>NO_ACTION</dd></div>
+        <div><dt>Reason</dt><dd>max_open_prs_reached</dd></div>
+        <div><dt>Queue wait</dt><dd>2m 56s</dd></div>
+        <div><dt>Run time</dt><dd>27s</dd></div>
+      </dl>
 
-      <section class="result">
-        <h2>Result</h2>
-        <pre id="resultBox">No result yet.</pre>
-      </section>
+      <p class="scan-explanation">
+        This example means LegacyFixer completed the scan and deliberately did not
+        open another pull request because the repository PR limit had already been reached.
+      </p>
     </section>
 
     <section class="note">
@@ -78,6 +94,5 @@
     </section>
   </main>
 
-  <script src="script.js"></script>
 </body>
 </html>
