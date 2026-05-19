@@ -188,3 +188,28 @@ pre {
     grid-template-columns: 1fr;
   }
 }
+
+.beta-scope {
+  margin: 0 0 28px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: var(--panel);
+}
+
+.beta-scope h2 {
+  margin: 0 0 12px;
+  font-size: 22px;
+  letter-spacing: -0.03em;
+}
+
+.beta-scope p {
+  margin: 0 0 10px;
+  max-width: 760px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.beta-scope p:last-child {
+  margin-bottom: 0;
+}
