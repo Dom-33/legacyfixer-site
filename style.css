@@ -137,7 +137,7 @@ pre {
   max-width: 680px;
 }
 
-.contact-email {
+.beta-access-status {
   color: var(--text);
   font-weight: 700;
   white-space: nowrap;
@@ -152,7 +152,7 @@ pre {
     display: block;
   }
 
-  .contact-email {
+  .beta-access-status {
     display: inline-block;
     margin-top: 14px;
     white-space: normal;
