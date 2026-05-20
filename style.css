@@ -321,3 +321,82 @@ pre {
     grid-template-columns: 1fr;
   }
 }
+
+/* Beta landing readability polish */
+.trust-card p,
+.beta-scope p,
+.test-repository p,
+.test-repository li,
+.scan-example p,
+.note p {
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.trust-card h2,
+.beta-scope h2,
+.test-repository h2,
+.scan-example h2 {
+  line-height: 1.2;
+}
+
+.test-repository ol {
+  max-width: none;
+}
+
+.install-button {
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .page {
+    width: min(760px, calc(100% - 28px));
+  }
+
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trust-card {
+    padding: 20px;
+  }
+
+  .test-repository,
+  .scan-example,
+  .beta-scope {
+    padding: 20px;
+  }
+
+  .install-button {
+    display: block;
+    width: 100%;
+  }
+
+  .scan-status {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  h1 {
+    font-size: 29px;
+  }
+
+  .subtitle {
+    font-size: 17px;
+  }
+
+  .trust-card p,
+  .beta-scope p,
+  .test-repository p,
+  .test-repository li,
+  .scan-example p,
+  .note p {
+    font-size: 16px;
+  }
+
+  .page {
+    width: min(100% - 24px, 520px);
+    padding-top: 32px;
+  }
+}
