@@ -53,8 +53,21 @@
       <h2>Test a repository</h2>
       <p>
         LegacyFixer is tested through GitHub repositories, not local file uploads.
-        Install the GitHub App on a selected repository. During the controlled beta,
-        repository settings and scan access are enabled for invited testers.
+        During the controlled beta, start with one selected repository.
+      </p>
+      <ol>
+        <li>Install the GitHub App.</li>
+        <li>Select only the repository you want LegacyFixer to monitor.</li>
+        <li>Make a small commit on the repository default branch.</li>
+        <li>
+          Open the read-only beta status page:
+          <code>https://app.legacyfixer.ai/beta/status/&lt;owner&gt;/&lt;repo&gt;</code>
+        </li>
+      </ol>
+      <p>
+        Replace <code>&lt;owner&gt;/&lt;repo&gt;</code> with the GitHub repository full name,
+        for example <code>Ubuntu-123/vulnerable-python-beta-test</code>.
+        The status page is available after the first push/webhook registers the repository.
       </p>
       <a class="install-button" href="https://github.com/apps/legacy-code-fixer/installations/new">
         Install GitHub App
@@ -70,17 +83,17 @@
 
       <dl class="scan-status">
         <div><dt>Latest job ID</dt><dd>example</dd></div>
-        <div><dt>Trigger</dt><dd>manual</dd></div>
+        <div><dt>Trigger</dt><dd>webhook</dd></div>
         <div><dt>Status</dt><dd>success</dd></div>
         <div><dt>Result</dt><dd>NO_ACTION</dd></div>
-        <div><dt>Reason</dt><dd>max_open_prs_reached</dd></div>
+        <div><dt>Reason</dt><dd>passive_findings</dd></div>
         <div><dt>Queue wait</dt><dd>2m 56s</dd></div>
         <div><dt>Run time</dt><dd>27s</dd></div>
       </dl>
 
       <p class="scan-explanation">
-        This example means LegacyFixer completed the scan and deliberately did not
-        open another pull request because the repository PR limit had already been reached.
+        This example means LegacyFixer completed the scan, found dependency findings,
+        and deliberately did not open a pull request because passive beta monitoring is enabled.
       </p>
     </section>
 
