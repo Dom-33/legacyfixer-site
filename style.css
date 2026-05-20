@@ -134,7 +134,6 @@ pre {
 
 .note p {
   margin: 0;
-  max-width: 680px;
 }
 
 .beta-access-status {
@@ -206,10 +205,7 @@ pre {
 }
 
 .beta-scope p {
-  margin: 0 0 10px;
-  max-width: 760px;
-  color: var(--muted);
-  line-height: 1.5;
+  margin-bottom: 10px;
 }
 
 .beta-scope p:last-child {
@@ -237,11 +233,45 @@ pre {
 }
 
 .test-repository p,
-.scan-example p {
+.scan-example p,
+.test-repository li,
+.beta-scope p,
+.note p {
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.test-repository p,
+.scan-example p,
+.beta-scope p,
+.note p {
   margin: 0;
-  max-width: 720px;
+  max-width: none;
   color: var(--muted);
-  line-height: 1.5;
+}
+
+.test-repository ol {
+  margin: 14px 0;
+  padding-left: 24px;
+}
+
+.test-repository li {
+  margin: 0 0 8px;
+  color: var(--muted);
+}
+
+.test-repository code {
+  font-family: inherit;
+  font-size: 0.95em;
+  overflow-wrap: anywhere;
+}
+
+.scan-status dt {
+  font-size: 14px;
+}
+
+.scan-status dd {
+  font-size: 16px;
 }
 
 .install-button {
