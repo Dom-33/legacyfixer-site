@@ -50,35 +50,29 @@
     </section>
 
     <section class="test-repository">
-      <h2>Test a repository</h2>
+      <h2>Request beta access</h2>
       <p>
-        LegacyFixer is tested through GitHub repositories, not local file uploads.
-        During the controlled beta, start with one selected repository.
+        LegacyFixer is currently available only for selected beta repositories.
+        It is not an open self-serve beta.
+      </p>
+      <p>
+        To request access, email <a href="mailto:beta@legacyfixer.ai">beta@legacyfixer.ai</a>
+        with a small public Python repository you would be comfortable testing on.
+        If the repository fits the current beta scope, we will confirm the next steps.
       </p>
       <ol>
-        <li>Install the GitHub App.</li>
-        <li>Select only the repository you want LegacyFixer to monitor.</li>
-        <li>Make a small commit on the repository default branch.</li>
-        <li>
-          Open the read-only beta status page:
-          <code>https://app.legacyfixer.ai/beta/status/&lt;owner&gt;/&lt;repo&gt;</code>
-        </li>
+        <li>Send the GitHub repository URL for review.</li>
+        <li>Use a small, non-critical public Python repository.</li>
+        <li>Start with passive monitoring: scan status only, no automatic pull requests.</li>
+        <li>If selected, install the GitHub App only on the approved repository.</li>
+        <li>After the first push, review the read-only beta status page.</li>
       </ol>
       <p>
-        Replace <code>&lt;owner&gt;/&lt;repo&gt;</code> with the GitHub repository full name,
-        for example <code>Ubuntu-123/vulnerable-python-beta-test</code>.
-        The status page is available after the first push/webhook registers the repository.
+        For the first beta test, the repository should include a <code>requirements.txt</code>
+        file. Do not use a production repository or sensitive code.
       </p>
-      <p>
-        For the first beta test, use a small non-critical Python repository with a
-        <code>requirements.txt</code> file. Do not start with a production or sensitive repository.
-      </p>
-      <p>
-        After the scan, send the status page URL, the latest job ID, and whether the result
-        matched what you expected from the repository to <a href="mailto:beta@legacyfixer.ai">beta@legacyfixer.ai</a>.
-      </p>
-      <a class="install-button" href="https://github.com/apps/legacy-code-fixer/installations/new">
-        Install GitHub App
+      <a class="install-button" href="mailto:beta@legacyfixer.ai?subject=LegacyFixer%20beta%20access%20request">
+        Request beta access
       </a>
     </section>
 
