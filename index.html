@@ -49,6 +49,31 @@
       </p>
     </section>
 
+    <section class="scan-example">
+      <h2>Review the public demo</h2>
+      <p>
+        Before requesting access, you can review a real LegacyFixer run on a public demo repository.
+      </p>
+      <ol>
+        <li>
+          <a href="https://app.legacyfixer.ai/beta/status/Dom-33/legacyfixer-realistic-python-demo" target="_blank">
+            Read-only status page
+          </a>
+          showing the scan result, queue/run timing, and generated pull request link.
+        </li>
+        <li>
+          <a href="https://github.com/Dom-33/legacyfixer-realistic-python-demo/pull/3" target="_blank">
+            Generated pull request
+          </a>
+          showing the dependency-file change, CI result, and no automatic merge.
+        </li>
+      </ol>
+      <p>
+        The demo shows the current v0.1 flow: a small dependency security change proposed as a reviewable pull request.
+      </p>
+    </section>
+
+
     <section class="test-repository">
       <h2>Request beta access</h2>
       <p>
@@ -63,13 +88,13 @@
       <ol>
         <li>Send the GitHub repository URL for review.</li>
         <li>Use a small, non-critical public Python repository.</li>
-        <li>Start with passive monitoring: scan status only, no automatic pull requests.</li>
+        <li>Start with passive monitoring or one controlled PR-creation test, depending on the repository.</li>
         <li>If selected, install the GitHub App only on the approved repository.</li>
         <li>After the first push, review the read-only beta status page.</li>
       </ol>
       <p>
-        For the first beta test, the repository should include a <code>requirements.txt</code>
-        file. Do not use a production repository or sensitive code.
+        For the current PR-creation beta, the supported dependency manifest is
+        <code>requirements.txt</code>. Do not use a production repository or sensitive code.
       </p>
       <a class="install-button" href="mailto:beta@legacyfixer.ai?subject=LegacyFixer%20beta%20access%20request">
         Request beta access
