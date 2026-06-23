@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How LegacyFixer works</title>
+  <link rel="stylesheet" href="style.css?v=public-readiness-v1-20260623132706">
+</head>
+<body>
+  <main class="page legal-page">
+    <section class="legal-header">
+      <p class="eyebrow">Legacy<span>Fixer</span></p>
+      <h1>How LegacyFixer works</h1>
+      <p class="subtitle">
+        A controlled GitHub App workflow for Python dependency-security maintenance.
+      </p>
+    </section>
+
+    <section class="legal-card">
+      <h2>Workflow</h2>
+      <ol>
+        <li>A repository owner requests access for one selected public Python repository.</li>
+        <li>If accepted, the GitHub App is installed only on the approved repository.</li>
+        <li>A repository push triggers a webhook event.</li>
+        <li>LegacyFixer queues and runs a dependency-security scan.</li>
+        <li>The scan result is recorded as a read-only status page.</li>
+        <li>Pull request creation remains disabled by default and can be enabled only through explicit repository-level settings.</li>
+      </ol>
+    </section>
+
+    <section class="legal-card">
+      <h2>Default behavior</h2>
+      <p>
+        The recommended first onboarding path is passive monitoring. LegacyFixer records findings and does not open a pull request.
+      </p>
+      <p>
+        When pull request creation is enabled, fixes are proposed through isolated branches and reviewable pull requests. LegacyFixer does not auto-merge.
+      </p>
+    </section>
+
+    <section class="legal-card">
+      <h2>Current validated coverage</h2>
+      <p>
+        LegacyFixer has been validated for selected Python dependency layouts including requirements.txt, nested requirements.txt, poetry.lock, Pipfile.lock, and setup.cfg install_requires.
+      </p>
+      <p>
+        Behavioral cases validated include passive findings, dependency conflicts, dependency hell, PR diff granularity, and no PR creation in passive mode.
+      </p>
+    </section>
+
+    <p class="legal-back"><a href="/">Back to LegacyFixer</a></p>
+  </main>
+</body>
+</html>

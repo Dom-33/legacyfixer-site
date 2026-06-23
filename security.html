@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LegacyFixer security model</title>
+  <link rel="stylesheet" href="style.css?v=public-readiness-v1-20260623132706">
+</head>
+<body>
+  <main class="page legal-page">
+    <section class="legal-header">
+      <p class="eyebrow">Legacy<span>Fixer</span></p>
+      <h1>Security model</h1>
+      <p class="subtitle">
+        LegacyFixer is designed around controlled access, repository-level settings, and review-first changes.
+      </p>
+    </section>
+
+    <section class="legal-card">
+      <h2>Access model</h2>
+      <ul>
+        <li>LegacyFixer is installed only on selected repositories approved for controlled access.</li>
+        <li>The first scan should use passive monitoring.</li>
+        <li>Pull request creation is optional and controlled per repository.</li>
+        <li>LegacyFixer does not auto-merge pull requests.</li>
+      </ul>
+    </section>
+
+    <section class="legal-card">
+      <h2>Repository handling</h2>
+      <p>
+        LegacyFixer scans dependency files and records operational scan results. During controlled access, use public, non-sensitive repositories only.
+      </p>
+      <p>
+        Do not submit secrets, private logs, tokens, confidential source code, or production-sensitive repositories for an initial onboarding run.
+      </p>
+    </section>
+
+    <section class="legal-card">
+      <h2>Security reports</h2>
+      <p>
+        To report a suspected security issue, use the branded security contact address that will be published before public onboarding opens. Use the subject “LegacyFixer security report”.
+      </p>
+      <p>
+        Please include a concise description, affected URL or repository if applicable, reproduction steps if safe to share, and your contact address.
+      </p>
+    </section>
+
+    <p class="legal-back"><a href="/">Back to LegacyFixer</a></p>
+  </main>
+</body>
+</html>
