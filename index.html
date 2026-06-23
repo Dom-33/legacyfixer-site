@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LegacyFixer</title>
-  <link rel="stylesheet" href="style.css?v=access-scope-v2-20260623115813">
+  <link rel="stylesheet" href="style.css?v=demo-section-v2-20260623121127">
 </head>
 <body>
   <main class="page">
@@ -19,8 +19,8 @@
         <a class="install-button" href="mailto:beta@legacyfixer.ai?subject=LegacyFixer%20access%20request">
           Request access
         </a>
-        <a class="secondary-button" href="https://app.legacyfixer.ai/beta/repo/23" target="_blank">
-          Review public demo
+        <a class="secondary-button" href="#public-demo">
+          See demo scan
         </a>
       </div>
     </section>
@@ -89,45 +89,33 @@
       </article>
     </section>
 
-    <section class="scan-example">
-      <h2>Review the public demo</h2>
-      <p>
-        You can review a real passive LegacyFixer scan before requesting access.
-      </p>
-      <ol>
-        <li>
-          <a href="https://app.legacyfixer.ai/beta/repo/23" target="_blank">
-            Read-only passive status page
+    <section id="public-demo" class="scan-example demo-section">
+      <div class="demo-layout">
+        <div class="demo-copy">
+          <h2>Review the public demo</h2>
+          <p>
+            Review a real passive LegacyFixer scan before requesting access.
+            The demo shows the recommended first onboarding path: scan, record findings,
+            and avoid pull request creation until the result is reviewed.
+          </p>
+          <a class="demo-link-card" href="https://app.legacyfixer.ai/beta/repo/23" target="_blank">
+            <span>Open read-only passive status page</span>
+            <strong>Successful scan with findings and no PR opened</strong>
           </a>
-          showing a successful scan with dependency findings and no pull request opened.
-        </li>
-      </ol>
-      <p>
-        The demo shows the recommended first onboarding path: scan, record findings, and avoid pull request creation until the result is reviewed.
-      </p>
-    </section>
+        </div>
 
-    <section class="scan-example">
-      <h2>What maintainers see after a scan</h2>
-      <p>
-        LegacyFixer records scan status, result, queue wait, run time, and the reason
-        why a pull request was or was not opened.
-      </p>
-
-      <dl class="scan-status">
-        <div><dt>Latest job ID</dt><dd>example</dd></div>
-        <div><dt>Trigger</dt><dd>webhook</dd></div>
-        <div><dt>Status</dt><dd>success</dd></div>
-        <div><dt>Result</dt><dd>NO_ACTION</dd></div>
-        <div><dt>Reason</dt><dd>passive_findings</dd></div>
-        <div><dt>Queue wait</dt><dd>47s</dd></div>
-        <div><dt>Run time</dt><dd>21s</dd></div>
-      </dl>
-
-      <p class="scan-explanation">
-        This example means LegacyFixer completed the scan, found dependency findings,
-        and deliberately did not open a pull request because passive monitoring is enabled.
-      </p>
+        <div class="demo-snapshot">
+          <h3>Demo scan snapshot</h3>
+          <dl class="scan-status compact-status">
+            <div><dt>Trigger</dt><dd>webhook</dd></div>
+            <div><dt>Status</dt><dd>success</dd></div>
+            <div><dt>Result</dt><dd>NO_ACTION</dd></div>
+            <div><dt>Reason</dt><dd>passive_findings</dd></div>
+            <div><dt>PR opened</dt><dd>no</dd></div>
+            <div><dt>Run time</dt><dd>21s</dd></div>
+          </dl>
+        </div>
+      </div>
     </section>
   </main>
 </body>
