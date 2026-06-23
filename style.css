@@ -321,3 +321,72 @@ h1 {
     font-size: 16px;
   }
 }
+
+
+/* Access scope polish START */
+.step-list {
+  display: grid;
+  gap: 12px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step-list li {
+  display: grid;
+  gap: 3px;
+  margin: 0;
+  padding: 13px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel-soft);
+}
+
+.step-list strong {
+  color: var(--text);
+  font-size: 15.5px;
+}
+
+.step-list span {
+  color: var(--muted);
+  font-size: 15.5px;
+  line-height: 1.45;
+}
+
+.validation-group {
+  margin-top: 18px;
+}
+
+.validation-group h3 {
+  margin: 0 0 10px;
+  color: var(--text);
+  font-size: 15.5px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.scope-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.scope-list li {
+  margin: 0;
+}
+
+.scope-list code {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel-soft);
+  padding: 7px 10px;
+  color: #0f172a;
+  font-size: 14px;
+  white-space: nowrap;
+}
+/* Access scope polish END */
