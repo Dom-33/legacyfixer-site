@@ -9,44 +9,76 @@
 <body>
   <main class="page">
     <section class="hero">
-      <p class="eyebrow">LegacyFixer</p>
+      <p class="eyebrow">Legacy<span>Fixer</span></p>
       <h1>Automated Python dependency security, without PR noise</h1>
       <p class="subtitle">
-        LegacyFixer is a controlled GitHub App that scans selected Python repositories,
-        detects known vulnerable dependencies, records scan results, and opens review-ready
-        pull requests only when repository settings allow it.
+        LegacyFixer scans selected Python repositories, records dependency-security results,
+        and creates review-ready pull requests only when repository settings explicitly allow it.
       </p>
+      <div class="hero-actions">
+        <a class="install-button" href="mailto:beta@legacyfixer.ai?subject=LegacyFixer%20access%20request">
+          Request access
+        </a>
+        <a class="secondary-button" href="https://app.legacyfixer.ai/beta/repo/23" target="_blank">
+          Review public demo
+        </a>
+      </div>
     </section>
 
     <section class="trust-grid" aria-label="LegacyFixer safety model">
       <article class="trust-card">
-        <h2>Audit-driven, not generative</h2>
-        <p>Uses dependency-security checks for known Python vulnerabilities. LegacyFixer does not rewrite application logic.</p>
+        <h2>Passive by default</h2>
+        <p>Start with scan results only. No code changes are made during the recommended first onboarding run.</p>
       </article>
       <article class="trust-card">
-        <h2>Review-first workflow</h2>
-        <p>When PR creation is enabled, fixes are proposed through isolated branches and pull requests for human review.</p>
+        <h2>Review-ready PRs</h2>
+        <p>When enabled, fixes are proposed through isolated branches and pull requests for human review.</p>
       </article>
       <article class="trust-card">
-        <h2>No PR flooding</h2>
-        <p>Repository-level settings control whether pull requests are created and how many can be open at once.</p>
+        <h2>Repository-level control</h2>
+        <p>Each repository controls whether PR creation is enabled and how many LegacyFixer PRs can be open.</p>
       </article>
     </section>
 
-    <section class="beta-scope">
-      <h2>Controlled early access scope</h2>
-      <p>
-        LegacyFixer currently focuses on Python dependency and security maintenance for selected GitHub repositories.
-        The safest default workflow is passive monitoring: scan the repository, record the result, and make no code changes.
-      </p>
-      <p>
-        Scans run asynchronously in the cloud. Pull requests are created only when repository settings explicitly allow it
-        and when a fix is available.
-      </p>
-      <p>
-        LegacyFixer does not make broad code changes, refactor applications, or merge anything automatically.
-        Fixes are proposed through pull requests for human review.
-      </p>
+    <section class="access-scope-grid">
+      <article class="test-repository">
+        <h2>Request access</h2>
+        <p>
+          LegacyFixer is currently available for selected repositories through controlled early access.
+          It is not an open self-serve product yet.
+        </p>
+        <p>
+          To request access, email <a href="mailto:beta@legacyfixer.ai">beta@legacyfixer.ai</a>
+          with one non-critical Python repository you would be comfortable reviewing in a controlled maintenance workflow.
+        </p>
+        <ol>
+          <li>Send the GitHub repository URL for review.</li>
+          <li>Start with one public, non-sensitive Python repository.</li>
+          <li>Use passive monitoring for the first scan unless a controlled PR test is explicitly agreed.</li>
+          <li>If selected, install the GitHub App only on the approved repository.</li>
+        </ol>
+        <a class="install-button" href="mailto:beta@legacyfixer.ai?subject=LegacyFixer%20access%20request">
+          Request access
+        </a>
+      </article>
+
+      <article class="beta-scope">
+        <h2>Current validated scope</h2>
+        <p>
+          LegacyFixer currently focuses on dependency-security maintenance for selected public Python repositories.
+          Pull requests are optional and created only when repository-level settings allow them.
+        </p>
+        <ul class="scope-list">
+          <li><code>requirements.txt</code></li>
+          <li>selected nested <code>requirements.txt</code></li>
+          <li><code>poetry.lock</code></li>
+          <li><code>Pipfile.lock</code></li>
+          <li><code>setup.cfg</code> <code>install_requires</code></li>
+        </ul>
+        <p>
+          For the first onboarding run, use a non-critical repository rather than production-sensitive code.
+        </p>
+      </article>
     </section>
 
     <section class="scan-example">
@@ -63,38 +95,8 @@
         </li>
       </ol>
       <p>
-        Passive monitoring is the recommended first onboarding path. Pull request creation is optional
-        and should be enabled only through explicit repository-level settings after the first result is reviewed.
+        The demo shows the recommended first onboarding path: scan, record findings, and avoid pull request creation until the result is reviewed.
       </p>
-    </section>
-
-    <section class="test-repository">
-      <h2>Request access</h2>
-      <p>
-        LegacyFixer is currently available for selected repositories through controlled early access.
-        It is not an open self-serve product yet.
-      </p>
-      <p>
-        To request access, email <a href="mailto:beta@legacyfixer.ai">beta@legacyfixer.ai</a>
-        with a Python repository you would be comfortable reviewing in a controlled maintenance workflow.
-        If the repository fits the current scope, we will confirm the next steps.
-      </p>
-      <ol>
-        <li>Send the GitHub repository URL for review.</li>
-        <li>Start with one non-critical Python repository.</li>
-        <li>Use passive monitoring for the first scan unless a controlled PR test is explicitly agreed.</li>
-        <li>If selected, install the GitHub App only on the approved repository.</li>
-        <li>After the first push, review the read-only status page.</li>
-      </ol>
-      <p>
-        Current validated dependency layouts include root and selected nested <code>requirements.txt</code> files,
-        <code>poetry.lock</code>, <code>Pipfile.lock</code>, and supported <code>setup.cfg</code>
-        <code>install_requires</code> declarations. Do not use a production-critical repository or sensitive code
-        for the first onboarding run.
-      </p>
-      <a class="install-button" href="mailto:beta@legacyfixer.ai?subject=LegacyFixer%20access%20request">
-        Request access
-      </a>
     </section>
 
     <section class="scan-example">
@@ -119,16 +121,6 @@
         and deliberately did not open a pull request because passive monitoring is enabled.
       </p>
     </section>
-
-    <section class="note">
-      <p>
-        LegacyFixer is in controlled early access for selected repositories. The safest first step is passive monitoring:
-        LegacyFixer records the result without creating pull requests. PR creation can be enabled later
-        with explicit repository-level limits.
-      </p>
-      <span class="beta-access-status">Access is currently controlled.</span>
-    </section>
   </main>
-
 </body>
 </html>
