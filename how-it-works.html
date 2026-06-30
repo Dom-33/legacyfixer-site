@@ -12,15 +12,15 @@
       <p class="eyebrow">Legacy<span>Fixer</span></p>
       <h1>How LegacyFixer works</h1>
       <p class="subtitle">
-        A controlled GitHub App workflow for Python dependency-security maintenance.
+        A self-service GitHub App workflow for Python dependency-security maintenance.
       </p>
     </section>
 
     <section class="legal-card">
       <h2>Workflow</h2>
       <ol>
-        <li>A repository owner requests access for one selected public Python repository.</li>
-        <li>If accepted, the GitHub App is installed only on the approved repository.</li>
+        <li>A repository owner signs in with GitHub and creates a workspace.</li>
+        <li>The GitHub App is installed only on repositories selected during installation.</li>
         <li>A repository push triggers a webhook event.</li>
         <li>LegacyFixer queues and runs a dependency-security scan.</li>
         <li>The scan result is recorded as a read-only status page.</li>

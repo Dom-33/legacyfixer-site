@@ -12,14 +12,14 @@
       <p class="eyebrow">Legacy<span>Fixer</span></p>
       <h1>Security model</h1>
       <p class="subtitle">
-        LegacyFixer is designed around controlled access, repository-level settings, and review-first changes.
+        LegacyFixer is designed around GitHub sign-in, repository-level settings, trial limits, and review-first changes.
       </p>
     </section>
 
     <section class="legal-card">
       <h2>Access model</h2>
       <ul>
-        <li>LegacyFixer is installed only on selected repositories approved for controlled access.</li>
+        <li>LegacyFixer is installed only on repositories selected during GitHub App installation.</li>
         <li>The first scan should use passive monitoring.</li>
         <li>Pull request creation is optional and controlled per repository.</li>
         <li>LegacyFixer does not auto-merge pull requests.</li>
@@ -29,7 +29,7 @@
     <section class="legal-card">
       <h2>Repository handling</h2>
       <p>
-        LegacyFixer scans dependency files and records operational scan results. During controlled access, use public, non-sensitive repositories only.
+        LegacyFixer scans dependency files and records operational scan results. During trial, use repositories you are comfortable evaluating in a dependency-maintenance workflow.
       </p>
       <p>
         Do not submit secrets, private logs, tokens, confidential source code, or production-sensitive repositories for an initial onboarding run.
