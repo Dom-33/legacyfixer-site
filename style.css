@@ -49,6 +49,24 @@ a {
   clip-path: inset(0 -100vmax);
 }
 
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 34px;
+}
+
+.brand-logo {
+  width: 54px;
+  height: 54px;
+  flex: 0 0 auto;
+  border-radius: 14px;
+}
+
+.brand-lockup .eyebrow {
+  margin: 0;
+}
+
 .eyebrow {
   width: fit-content;
   margin: 0 0 34px;
