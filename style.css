@@ -103,8 +103,7 @@ h1 {
   margin-top: 34px;
 }
 
-.install-button,
-.secondary-button {
+.install-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -123,16 +122,6 @@ h1 {
 .install-button:hover {
   border-color: var(--accent-bright);
   background: var(--accent-bright);
-}
-
-.secondary-button {
-  border: 1px solid rgba(203, 213, 225, 0.38);
-  background: rgba(15, 23, 42, 0.22);
-  color: var(--hero-text);
-}
-
-.secondary-button:hover {
-  border-color: var(--accent-bright);
 }
 
 .trust-grid {
@@ -298,8 +287,7 @@ h1 {
     margin-top: 28px;
   }
 
-  .hero-actions .install-button,
-  .hero-actions .secondary-button {
+  .hero-actions .install-button {
     width: 100%;
   }
 
