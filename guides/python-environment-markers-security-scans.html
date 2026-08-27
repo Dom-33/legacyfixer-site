@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link
+    rel="canonical"
+    href="https://legacyfixer.ai/guides/python-environment-markers-security-scans"
+  >
+
+  <title>Python Environment Markers Can Hide Dependencies from Security Scans | LegacyFixer</title>
+
+  <meta
+    name="description"
+    content="A 2026 Dependabot case shows how Python environment-marker parsing can drop valid dependencies before security analysis. We tested the same marker structure through LegacyFixer's detect-only scan."
+  >
+
+  <link rel="icon" type="image/png" href="../legacyfixer-logo.png">
+  <link rel="stylesheet" href="../style.css?v=guides-v1-20260827">
+</head>
+
+<body>
+  <main class="page legal-page">
+
+    <section class="legal-header">
+      <div class="brand-lockup">
+        <img
+          class="brand-logo"
+          src="../legacyfixer-logo.png"
+          alt="LegacyFixer logo"
+          width="54"
+          height="54"
+        >
+        <p class="eyebrow">Legacy<span>Fixer</span></p>
+      </div>
+
+      <h1>
+        Python Environment Markers Can Hide Dependencies from Security Scans
+      </h1>
+
+      <p class="subtitle">
+        A 2026 Dependabot case and a controlled LegacyFixer test.
+      </p>
+    </section>
+
+    <article class="legal-card">
+
+      <p>
+        A result showing “0 vulnerabilities” does not always mean that every
+        relevant dependency was actually analyzed.
+      </p>
+
+      <p>
+        In August 2026, while investigating a Python dependency-graph issue in
+        <code>dependabot-core</code>, a defect was identified in the way
+        Dependabot’s Python <code>FileParser</code> evaluates certain
+        environment-marker expressions in <code>requirements.txt</code>.
+      </p>
+
+      <p>
+        The problem is subtle: a valid dependency can be removed from the
+        resolved dependency information before downstream security analysis
+        can use it.
+      </p>
+
+      <p>
+        A proposed fix exists in Dependabot Pull Request
+        <a
+          href="https://github.com/dependabot/dependabot-core/pull/15875"
+          rel="noopener noreferrer"
+        >#15875</a>,
+        “Align Python marker parsing between FileParser and UpdateChecker to
+        avoid dropping requirements.”
+      </p>
+
+      <p>
+        At the time of our verification, PR #15875 was still a Draft, remained
+        a work in progress, required review, and had not been merged.
+      </p>
+
+      <figure>
+        <img
+          src="assets/dependabot-pr-15875-draft.png"
+          alt="Dependabot pull request 15875 shown as Draft"
+          loading="lazy"
+          style="max-width:100%;height:auto;border-radius:12px;"
+        >
+        <figcaption>
+          Dependabot PR #15875 during our verification on August 27, 2026.
+        </figcaption>
+      </figure>
+
+      <h2>What are Python environment markers?</h2>
+
+      <p>
+        Python dependencies can be conditional on characteristics of the
+        environment in which a project runs.
+      </p>
+
+      <p>For example:</p>
+
+      <pre><code>greenlet==3.5.4 ; python_version &gt;= "3.9" and platform_machine == "x86_64"</code></pre>
+
+      <p>
+        This means that <code>greenlet==3.5.4</code> applies only when both
+        conditions are true:
+      </p>
+
+      <ul>
+        <li>the Python version is at least 3.9;</li>
+        <li>the machine architecture is <code>x86_64</code>.</li>
+      </ul>
+
+      <p>
+        Environment markers are a normal part of Python packaging. The problem
+        begins when a tool evaluates the expression incorrectly and decides
+        that a valid dependency should not be included.
+      </p>
+
+      <h2>The defect identified in Dependabot</h2>
+
+      <p>
+        PR #15875 documents inconsistent behavior in Dependabot’s legacy marker
+        handling.
+      </p>
+
+      <p>An expression using <code>or</code> could retain the dependency:</p>
+
+      <pre><code>python_version &gt;= "3.9" or platform_machine == "x86_64"</code></pre>
+
+      <p>
+        while an expression combining the same types of conditions using
+        <code>and</code> could cause the dependency to be discarded:
+      </p>
+
+      <pre><code>python_version &gt;= "3.9" and platform_machine == "x86_64"</code></pre>
+
+      <p>
+        The PR author narrowed the defect to the legacy marker handling in
+        <code>FileParser</code> when Python-version and platform conditions are
+        combined with <code>and</code>. The regression tests added in the
+        proposed fix verify that valid dependencies such as
+        <code>greenlet</code> remain present in the resolved dependency graph.
+      </p>
+
+      <p>
+        The proposed fix moves marker evaluation toward a shared evaluator so
+        that <code>FileParser</code> and <code>UpdateChecker</code> apply the
+        logic consistently. The PR also includes dependency-graph regression
+        coverage for compiled requirements containing marker expressions.
+      </p>
+
+      <h2>Why this matters for dependency security</h2>
+
+      <p>
+        The problem is not simply that a dependency graph may become
+        incomplete.
+      </p>
+
+      <p>
+        If a dependency disappears before vulnerabilities are matched against
+        resolved package versions, the absence of a finding becomes ambiguous.
+      </p>
+
+      <p>These two outcomes are fundamentally different:</p>
+
+      <pre><code>Dependency analyzed → no vulnerability found</code></pre>
+
+      <p>and:</p>
+
+      <pre><code>Dependency excluded before analysis → no vulnerability reported</code></pre>
+
+      <p>
+        Both can eventually appear to the user as “nothing found.”
+      </p>
+
+      <p>
+        From a security perspective, however, they are not equivalent.
+      </p>
+
+      <p>
+        This is one of the more difficult failure modes in dependency
+        automation: it is necessary to verify not only the findings produced by
+        a scanner, but also whether the correct dependency set reached the
+        scanner in the first place.
+      </p>
+
+      <h2>Testing the same marker structure with LegacyFixer</h2>
+
+      <p>
+        LegacyFixer uses <code>pip-audit</code> in its passive scanning path for
+        a repository containing <code>requirements.txt</code>.
+      </p>
+
+      <p>
+        That path is detect-only: it does not invoke <code>--fix</code>, create
+        branches, commit changes, or push modifications to the repository.
+      </p>
+
+      <p>We tested one specific question:</p>
+
+      <p>
+        <strong>
+          Does the LegacyFixer passive-scanning path reproduce the same failure
+          mode for a python_version AND platform_machine expression?
+        </strong>
+      </p>
+
+      <p>We did not assume the answer.</p>
+
+      <p>The test environment was:</p>
+
+      <pre><code>Python 3.12.3
+Linux x86_64
+pip-audit 2.10.1</code></pre>
+
+      <p>
+        Both conditions in the following marker were therefore true:
+      </p>
+
+      <pre><code>greenlet==3.5.4 ; python_version &gt;= "3.9" and platform_machine == "x86_64"</code></pre>
+
+      <p><code>pip-audit</code> retained the dependency explicitly:</p>
+
+      <pre><code>greenlet==3.5.4</code></pre>
+
+      <p>We then changed only the Python condition:</p>
+
+      <pre><code>greenlet==3.5.4 ; python_version &lt; "3.9" and platform_machine == "x86_64"</code></pre>
+
+      <p>
+        In the same environment, that expression is false.
+      </p>
+
+      <p><code>greenlet</code> was excluded.</p>
+
+      <p>
+        This negative control matters because it shows that the marker was
+        actually being evaluated rather than simply ignored.
+      </p>
+
+      <h2>Testing through the actual LegacyFixer passive-scan routine</h2>
+
+      <p>
+        We then tested the real LegacyFixer passive-scan function rather than
+        calling <code>pip-audit</code> alone.
+      </p>
+
+      <p>
+        To make the result directly observable, we used:
+      </p>
+
+      <pre><code>requests==2.19.1</code></pre>
+
+      <p>
+        because this version produces known vulnerability findings in the test
+        environment.
+      </p>
+
+      <p>The positive case was:</p>
+
+      <pre><code>requests==2.19.1 ; python_version &gt;= "3.9" and platform_machine == "x86_64"</code></pre>
+
+      <p>LegacyFixer reported:</p>
+
+      <pre><code>PASSIVE PIP-AUDIT FINDINGS</code></pre>
+
+      <p>
+        and the output contained vulnerability findings for
+        <code>requests==2.19.1</code>.
+      </p>
+
+      <p>For the negative control, we used:</p>
+
+      <pre><code>requests==2.19.1 ; python_version &lt; "3.9" and platform_machine == "x86_64"</code></pre>
+
+      <p>LegacyFixer reported:</p>
+
+      <pre><code>PASSIVE PIP-AUDIT CLEAN</code></pre>
+
+      <p>
+        because the false environment marker correctly excluded the dependency
+        in that environment.
+      </p>
+
+      <p>
+        The screenshot below shows the positive and negative cases from the
+        controlled LegacyFixer run. Both use an <code>and</code> expression:
+        the Python condition alone is changed so that the marker is true in
+        one case and false in the other.
+      </p>
+
+      <figure>
+        <img
+          src="assets/legacyfixer-marker-test-summary.png"
+          alt="LegacyFixer marker test showing positive findings and negative clean result"
+          loading="lazy"
+          style="max-width:100%;height:auto;border-radius:12px;"
+        >
+        <figcaption>
+          Controlled positive and negative marker tests through the LegacyFixer
+          passive-scan routine.
+        </figcaption>
+      </figure>
+
+      <p>The result can be summarized as follows:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Test case</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Satisfied environment marker</td>
+            <td>Dependency retained and audited</td>
+          </tr>
+          <tr>
+            <td>Unsatisfied environment marker</td>
+            <td>Dependency excluded</td>
+          </tr>
+          <tr>
+            <td>
+              Satisfied <code>python_version AND platform_machine</code>
+            </td>
+            <td>
+              The Dependabot failure mode documented in PR #15875 was not
+              reproduced
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>What this test demonstrates — and what it does not</h2>
+
+      <p>
+        The experiment demonstrates that, in the case we tested, the
+        LegacyFixer detect-only path did not reproduce the specific
+        marker-evaluation failure mode documented in Dependabot PR #15875.
+      </p>
+
+      <p>
+        It does <strong>not</strong> demonstrate that LegacyFixer is immune to
+        every possible environment-marker problem.
+      </p>
+
+      <p>
+        It does <strong>not</strong> demonstrate that LegacyFixer is generally
+        more correct than Dependabot.
+      </p>
+
+      <p>
+        And this was not a benchmark in which both products were executed side
+        by side against the same repository.
+      </p>
+
+      <p>
+        The Dependabot defect is documented upstream through its own regression
+        test and proposed fix. Our LegacyFixer experiment was performed
+        separately using the same logical marker structure.
+      </p>
+
+      <p>That distinction matters.</p>
+
+      <h2>Detection first, modification later</h2>
+
+      <p>
+        The case also illustrates why LegacyFixer separates dependency
+        detection from repository modification.
+      </p>
+
+      <p>In passive mode, the first question is:</p>
+
+      <p><strong>What problems exist?</strong></p>
+
+      <p>
+        The scanner can answer that question without automatically turning
+        every result into a branch or Pull Request.
+      </p>
+
+      <p>
+        A separate decision can then determine whether a repository
+        modification should be proposed.
+      </p>
+
+      <p>
+        This architecture cannot eliminate every possible scanning error. No
+        dependency-security tool can make that assumption.
+      </p>
+
+      <p>
+        But it reduces the number of stages in which an uncertain detection
+        result immediately produces repository changes.
+      </p>
+
+      <p>
+        In dependency automation, more automation does not automatically mean
+        more certainty.
+      </p>
+
+      <p>
+        Sometimes the safer sequence is simpler:
+      </p>
+
+      <p>
+        <strong>
+          First verify the signal. Then decide whether the code should change.
+        </strong>
+      </p>
+
+    </article>
+
+    <p class="legal-back">
+      <a href="/guides">Back to Guides</a>
+    </p>
+
+    <p class="legal-back">
+      <a href="/">Back to LegacyFixer</a>
+    </p>
+
+  </main>
+</body>
+</html>
