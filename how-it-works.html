@@ -16,12 +16,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://legacyfixer.ai/how-it-works">
   <title>How LegacyFixer works</title>
+  <link rel="icon" type="image/png" href="legacyfixer-logo.png">
   <link rel="stylesheet" href="style.css?v=public-readiness-v1-20260623132706">
 </head>
 <body>
   <main class="page legal-page">
     <section class="legal-header">
-      <p class="eyebrow">Legacy<span>Fixer</span></p>
+      <div class="brand-lockup">
+        <img class="brand-logo" src="legacyfixer-logo.png" alt="LegacyFixer logo" width="54" height="54">
+        <p class="eyebrow">Legacy<span>Fixer</span></p>
+      </div>
       <h1>How LegacyFixer works</h1>
       <p class="subtitle">
         A self-service GitHub App workflow for Python dependency-security maintenance.
@@ -35,7 +39,7 @@
         <li>The GitHub App is installed only on repositories selected during installation.</li>
         <li>A repository push triggers a webhook event.</li>
         <li>LegacyFixer queues and runs a dependency-security scan.</li>
-        <li>The scan result is recorded as a read-only status page.</li>
+        <li>The scan outcome is recorded and displayed in the authenticated workspace dashboard.</li>
         <li>Pull request creation remains disabled by default and can be enabled only through explicit repository-level settings.</li>
       </ol>
     </section>
