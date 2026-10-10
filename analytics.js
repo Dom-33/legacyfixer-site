@@ -120,9 +120,15 @@
       "background:white;padding:9px 13px;border-radius:9px;font-weight:700}" +
       "#lf-consent-panel button[data-choice=granted]{background:#11b8a6;" +
       "border-color:#11b8a6;color:#091c27}" +
-      "#lf-consent-manage{position:fixed;z-index:99999;right:12px;bottom:10px;" +
-      "font:12px system-ui,sans-serif;background:#fff;border:1px solid #cbd5e1;" +
-      "padding:6px 9px;border-radius:8px;cursor:pointer;color:#344054}";
+      "#lf-consent-manage{position:static;display:inline-block;margin:0 0 0 12px;" +
+      "font:700 14px/1.5 system-ui,sans-serif;background:transparent;border:0;" +
+      "padding:0;border-radius:0;cursor:pointer;color:#0f766e;text-align:left;" +
+      "text-underline-offset:3px}" +
+      "#lf-consent-manage:hover,#lf-consent-manage:focus-visible{text-decoration:underline}" +
+      "#lf-consent-manage:focus-visible{outline:2px solid #0f766e;outline-offset:3px}" +
+      ".site-footer nav #lf-consent-manage{margin:0;font-size:13px}" +
+      ".legal-back #lf-consent-manage{margin-left:16px}" +
+      ".lf-analytics-footer{padding:20px 0;text-align:center}";
     document.head.appendChild(style);
     var manage = document.createElement("button");
     manage.id = "lf-consent-manage";
@@ -130,7 +136,24 @@
     manage.textContent = "Analytics preferences";
     manage.setAttribute("aria-label", "Change analytics consent preferences");
     manage.addEventListener("click", showPrompt);
-    document.body.appendChild(manage);
+    // The optional control belongs in the site's navigation/footer, not
+    // permanently over the page content. Keep it available on subpages too.
+    var footerNav = document.querySelector(".site-footer nav");
+    if (footerNav) {
+      var privacyLink = footerNav.querySelector('a[href="/privacy"]');
+      footerNav.insertBefore(manage, privacyLink ? privacyLink.nextSibling : null);
+    } else {
+      var footerLinks = document.querySelector(".legal-back") ||
+        document.querySelector(".site-footer") ||
+        document.querySelector("footer");
+      if (!footerLinks) {
+        footerLinks = document.createElement("footer");
+        footerLinks.className = "lf-analytics-footer";
+        footerLinks.setAttribute("aria-label", "Site preferences");
+        document.body.appendChild(footerLinks);
+      }
+      footerLinks.appendChild(manage);
+    }
   }
 
   function showPrompt() {
