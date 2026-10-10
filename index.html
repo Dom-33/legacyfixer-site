@@ -1,147 +1,205 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <script defer src="analytics.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+  <meta name="description" content="LegacyFixer scans Python dependencies for security vulnerabilities. Review findings first, with optional validated fix pull requests controlled per repository.">
   <link rel="canonical" href="https://legacyfixer.ai/">
-  <title>LegacyFixer</title>
+  <title>LegacyFixer — Python dependency security without PR noise</title>
   <link rel="icon" type="image/png" href="legacyfixer-logo.png">
   <link rel="stylesheet" href="style.css?v=pricing-v1-20260818">
+  <link rel="stylesheet" href="landing.css?v=20261010">
+  <script defer src="analytics.js"></script>
 </head>
-<body>
-  <main class="page">
-     <section class="hero">
-      <div class="brand-lockup">
-        <img
-          class="brand-logo"
-          src="legacyfixer-logo.png"
-          alt="LegacyFixer logo"
-          width="54"
-          height="54"
-        >
-        <p class="eyebrow">Legacy<span>Fixer</span></p>
-      </div>
-      <h1>Automated Python dependency security, without PR noise</h1>
-      <p class="subtitle">
-        LegacyFixer scans selected Python repositories, records dependency-security results,
-        and creates review-ready pull requests only when repository settings explicitly allow it.
-      </p>
-      <div class="hero-actions">
-        <a class="install-button" href="https://app.legacyfixer.ai/app">
-          Start free trial
+<body class="landing-home">
+  <svg aria-hidden="true" class="landing-icon-defs" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="lf-icon-github" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 .297a12 12 0 0 0-3.793 23.384c.6.111.82-.261.82-.577v-2.234c-3.338.726-4.043-1.416-4.043-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.304-5.466-1.333-5.466-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.52 11.52 0 0 1 12 6.104c1.02.005 2.047.138 3.006.404 2.29-1.552 3.295-1.23 3.295-1.23.655 1.652.243 2.873.12 3.176.77.84 1.235 1.91 1.235 3.221 0 4.61-2.803 5.624-5.475 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.216.694.825.576A12.001 12.001 0 0 0 12 .297Z"/></symbol>
+    <symbol id="lf-icon-run" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m10 8 6 4-6 4z"/></symbol>
+    <symbol id="lf-icon-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="lf-icon-branch" viewBox="0 0 24 24"><circle cx="6" cy="5" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="6" cy="19" r="2"/><path d="M6 7v10M18 9v3a7 7 0 0 1-7 7H8"/></symbol>
+    <symbol id="lf-icon-settings" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2" fill="currentColor" stroke="none"/><circle cx="16" cy="12" r="2" fill="currentColor" stroke="none"/><circle cx="8" cy="18" r="2" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="lf-icon-check" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></symbol>
+    <symbol id="lf-icon-file" viewBox="0 0 24 24"><path d="M7 2.5h7l5 5V21H5V4.5a2 2 0 0 1 2-2Z"/><path d="M14 2.5V8h5M8 12h8M8 16h6"/></symbol>
+    <symbol id="lf-icon-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-7-7 7 7-7 7"/></symbol>
+    <symbol id="lf-icon-shield" viewBox="0 0 24 24"><path d="M12 2 21 6v6c0 5-3.5 8.5-9 10-5.5-1.5-9-5-9-10V6Z"/><path d="m8 12 2.5 2.5L16 9"/></symbol>
+  </svg>
+
+  <main class="page landing-page">
+    <section class="hero home-hero" aria-labelledby="landing-title">
+      <header class="home-topbar">
+        <a class="home-brand" href="/" aria-label="LegacyFixer home">
+          <img src="legacyfixer-logo.png" alt="" width="46" height="46">
+          <span>Legacy<span class="brand-bright">Fixer</span></span>
         </a>
-       </div>
+        <nav class="home-nav" aria-label="Main navigation">
+          <a href="/how-it-works">How it works</a>
+          <a href="/demo">Public demo</a>
+          <a href="/guides">Guides</a>
+          <a href="/pricing">Pricing</a>
+          <a href="/security">Security</a>
+          <a href="/about">About</a>
+        </nav>
+        <a class="home-signin" href="https://app.legacyfixer.ai/app">Sign in</a>
+      </header>
+
+      <div class="home-hero-grid">
+        <div class="home-hero-copy">
+          <p class="home-kicker"><svg class="home-icon" aria-hidden="true"><use href="#lf-icon-shield"/></svg> Built for maintainers</p>
+          <h1 id="landing-title">Automated Python dependency security, <span>without PR noise.</span></h1>
+          <p class="subtitle">
+            LegacyFixer scans selected Python repositories, records dependency-security results,
+            and creates review-ready pull requests only when repository settings explicitly allow it.
+          </p>
+          <div class="hero-actions">
+            <a class="install-button home-primary-cta" href="https://app.legacyfixer.ai/app">Start free trial <svg class="home-icon" aria-hidden="true"><use href="#lf-icon-arrow"/></svg></a>
+          </div>
+          <ul class="home-trial-facts" aria-label="Trial details">
+            <li><svg class="home-icon" aria-hidden="true"><use href="#lf-icon-check"/></svg> 7-day trial</li>
+            <li><svg class="home-icon" aria-hidden="true"><use href="#lf-icon-check"/></svg> Up to 3 repositories</li>
+            <li><svg class="home-icon" aria-hidden="true"><use href="#lf-icon-check"/></svg> No credit card required</li>
+          </ul>
+        </div>
+        <aside class="home-hero-preview" aria-label="Read-only historical scan summary">
+          <div class="home-preview-heading">
+            <span class="home-preview-tag">Historical example · read-only</span>
+            <span class="home-preview-success"><svg class="home-icon" aria-hidden="true"><use href="#lf-icon-check"/></svg> Success</span>
+          </div>
+          <h2>Recorded scan result</h2>
+          <p>Run #88 <span aria-hidden="true">·</span> June 10, 2026 <span aria-hidden="true">·</span> Passive scan</p>
+          <div class="home-preview-metrics">
+            <div><strong>23</strong><span>Reported vulnerabilities</span></div>
+            <div><strong>1</strong><span>Affected package</span></div>
+            <div><strong>0</strong><span>Pull requests opened</span></div>
+            <div><strong>NO_ACTION</strong><span>Recorded outcome</span></div>
+          </div>
+          <div class="home-preview-footnote">
+            <svg class="home-icon" aria-hidden="true"><use href="#lf-icon-shield"/></svg>
+            <span>Findings recorded. No repository changes in passive mode.</span>
+          </div>
+        </aside>
+      </div>
     </section>
 
-    <section class="trust-grid" aria-label="LegacyFixer safety model">
+    <section class="trust-grid home-benefits" aria-label="LegacyFixer safety model">
       <article class="trust-card">
+        <div class="home-icon-tile tile-teal"><svg class="home-icon" aria-hidden="true"><use href="#lf-icon-search"/></svg></div>
         <h2>Passive by default</h2>
         <p>Start with scan results only. No code changes are made during the recommended first onboarding run.</p>
       </article>
       <article class="trust-card">
+        <div class="home-icon-tile tile-violet"><svg class="home-icon" aria-hidden="true"><use href="#lf-icon-branch"/></svg></div>
         <h2>Review-ready PRs</h2>
         <p>When enabled, fixes are proposed through isolated branches and pull requests for human review.</p>
       </article>
       <article class="trust-card">
+        <div class="home-icon-tile tile-blue"><svg class="home-icon" aria-hidden="true"><use href="#lf-icon-settings"/></svg></div>
         <h2>Repository-level control</h2>
         <p>Each repository controls whether PR creation is enabled and how many LegacyFixer PRs can be open.</p>
       </article>
     </section>
 
-     <section class="access-scope-grid">
-      <article class="test-repository">
-        <h2>Start free trial</h2>
-        <p>
-          LegacyFixer is available as a self-service GitHub App for selected Python repositories.
-          Start with GitHub and run passive dependency-security scans during a 7-day trial, with up to 3 connected repositories. The trial expires after 7 days even if only one repository has been connected.
-        </p>
-        <p>
-          Start with <a href="https://app.legacyfixer.ai/app">Sign in with GitHub</a>. Passive scans are available first; pull requests are created only when repository settings explicitly allow them.
-        </p>
-        <p>
-          You can remove access at any time from GitHub settings by uninstalling the GitHub App or changing repository access.
-        </p>
-        <ol class="step-list">
-          <li><strong>Sign in with GitHub</strong><span>Create your workspace and connect selected Python repositories.</span></li>
-          <li><strong>Run passive scans first</strong><span>The first scan records findings without opening a pull request.</span></li>
-          <li><strong>Enable PRs deliberately</strong><span>Pull request creation is optional and controlled per repository.</span></li>
-        </ol>
-      </article>
-
-      <article class="beta-scope">
-        <h2>Current validated coverage</h2>
-
-        <div class="validation-group">
-          <h3>Dependency layouts</h3>
-          <ul class="scope-list">
-            <li><code>requirements.txt</code></li>
-            <li><code>nested requirements.txt</code></li>
-            <li><code>poetry.lock</code></li>
-            <li><code>Pipfile.lock</code></li>
-            <li><code>setup.cfg install_requires</code></li>
-          </ul>
+    <section class="home-onboarding" aria-labelledby="onboarding-title">
+      <p class="home-section-label">Get started in minutes</p>
+      <h2 id="onboarding-title">Start with a <span>safe onboarding path</span></h2>
+      <p class="home-section-summary">LegacyFixer is a self-service GitHub App. Begin with passive dependency-security scans and enable pull requests only when you're ready.</p>
+      <ol class="home-onboarding-steps">
+        <li>
+          <span class="step-number">1</span>
+          <div class="home-icon-tile tile-github"><svg class="home-icon home-github-mark" aria-hidden="true"><use href="#lf-icon-github"/></svg></div>
+          <strong>Sign in with GitHub</strong>
+          <span>Create your workspace and connect selected Python repositories.</span>
+        </li>
+        <li>
+          <span class="step-number">2</span>
+          <div class="home-icon-tile tile-teal"><svg class="home-icon" aria-hidden="true"><use href="#lf-icon-run"/></svg></div>
+          <strong>Run passive scans first</strong>
+          <span>Record vulnerability findings without opening a pull request.</span>
+        </li>
+        <li>
+          <span class="step-number">3</span>
+          <div class="home-icon-tile tile-violet"><svg class="home-icon" aria-hidden="true"><use href="#lf-icon-settings"/></svg></div>
+          <strong>Enable PRs deliberately</strong>
+          <span>Control optional fix pull requests through repository settings.</span>
+        </li>
+      </ol>
+      <div class="home-onboarding-bottom">
+        <div>
+          <strong>7 days · up to 3 connected repositories</strong>
+          <p>The trial ends after seven days, even if fewer than three repositories are connected. Access can be revoked in GitHub settings at any time.</p>
         </div>
-
-        <div class="validation-group">
-          <h3>Behavioral cases</h3>
-          <ul class="scope-list">
-            <li><code>passive findings</code></li>
-            <li><code>dependency conflict</code></li>
-            <li><code>dependency hell</code></li>
-            <li><code>PR diff granularity</code></li>
-            <li><code>no PR in passive mode</code></li>
-          </ul>
-        </div>
-
-        <p>
-          Best first fit: a small or medium public repository that is not production-sensitive.
-        </p>
-      </article>
-    </section>
-
-    <section id="public-demo" class="scan-example demo-section">
-      <div class="demo-layout">
-        <div class="demo-copy">
-          <h2>Review the public demo</h2>
-          <p>
-            Explore a verified historical passive scan before connecting a repository.
-            The read-only example shows recorded findings and why no pull request was created.
-            This snapshot is not a live scan.
-          </p>
-          <a class="demo-link-card" href="/demo">
-            <span>Explore verified read-only scan example</span>
-            <strong>Historical passive result · 23 reported vulnerabilities · no PR opened</strong>
-          </a>
-        </div>
-
-        <div class="demo-snapshot">
-          <h3>Demo scan snapshot</h3>
-          <dl class="scan-status compact-status">
-            <div><dt>Trigger</dt><dd>webhook</dd></div>
-            <div><dt>Status</dt><dd>success</dd></div>
-            <div><dt>Result</dt><dd>NO_ACTION</dd></div>
-            <div><dt>Reason</dt><dd>passive_findings</dd></div>
-            <div><dt>PR opened</dt><dd>no</dd></div>
-            <div><dt>Run time</dt><dd>1m 50s</dd></div>
-          </dl>
-        </div>
+        <a href="https://app.legacyfixer.ai/app" class="install-button home-primary-cta">Start free trial <svg class="home-icon" aria-hidden="true"><use href="#lf-icon-arrow"/></svg></a>
       </div>
     </section>
-    <footer class="site-footer">
-      <nav aria-label="Footer">
-        <a href="/about">About</a>
-        <a href="/demo">Public demo</a>
-        <a href="/guides">Guides</a>
-        <a href="/how-it-works">How it works</a>
-        <a href="/pricing">Pricing</a>
-        <a href="/security">Security</a>
-        <a href="/privacy">Privacy</a>
-        <a href="/terms">Terms</a>
-        <a href="/support">Support</a>
-</nav>
-<p>© 2026 LegacyFixer</p>
+
+    <section class="home-coverage" aria-labelledby="coverage-title">
+      <p class="home-section-label">Current validated coverage</p>
+      <h2 id="coverage-title">Works with <span>real Python projects</span></h2>
+      <p class="home-section-summary">Tested across common dependency layouts and real-world behavioral cases.</p>
+      <div class="home-coverage-row">
+        <h3>Dependency layouts</h3>
+        <ul class="home-coverage-tags">
+          <li><code>requirements.txt</code></li>
+          <li><code>nested requirements.txt</code></li>
+          <li><code>poetry.lock</code></li>
+          <li><code>Pipfile.lock</code></li>
+          <li><code>setup.cfg install_requires</code></li>
+        </ul>
+      </div>
+      <div class="home-coverage-row">
+        <h3>Behavioral cases</h3>
+        <ul class="home-coverage-tags home-coverage-tests">
+          <li><code>passive findings</code></li>
+          <li><code>dependency conflict</code></li>
+          <li><code>dependency hell</code></li>
+          <li><code>PR diff granularity</code></li>
+          <li><code>no PR in passive mode</code></li>
+        </ul>
+      </div>
+      <p class="home-coverage-note">Best first fit: a small or medium public repository that is not production-sensitive.</p>
+    </section>
+
+    <section id="public-demo" class="home-demo" aria-labelledby="demo-title">
+      <div class="home-demo-intro">
+        <p class="home-section-label">Public scan example</p>
+        <h2 id="demo-title">Review a real scan result</h2>
+        <p>Explore a verified historical, read-only passive scan to see what LegacyFixer records and why no pull request was created. This snapshot is not a live scan.</p>
+        <a class="home-demo-link" href="/demo"><svg class="home-icon" aria-hidden="true"><use href="#lf-icon-file"/></svg> View public demo <svg class="home-icon" aria-hidden="true"><use href="#lf-icon-arrow"/></svg></a>
+      </div>
+      <div class="home-demo-panel">
+        <span class="home-preview-tag">Verified historical run #88</span>
+        <div class="home-demo-status"><svg class="home-icon" aria-hidden="true"><use href="#lf-icon-check"/></svg> Scan completed successfully</div>
+        <dl class="home-demo-results">
+          <div><dt>Trigger</dt><dd>webhook</dd></div>
+          <div><dt>Run time</dt><dd>1m 50s</dd></div>
+          <div><dt>Result</dt><dd>NO_ACTION</dd></div>
+          <div><dt>Reason</dt><dd>passive_findings</dd></div>
+          <div><dt>Vulnerabilities</dt><dd>23 reported</dd></div>
+          <div><dt>PR opened</dt><dd>no</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="home-about" aria-label="About LegacyFixer">
+      <div><p class="home-section-label">Independent project</p><h2>Built through careful <span>human–AI collaboration</span></h2></div>
+      <a href="/about">Meet the founder and read the project story <svg class="home-icon" aria-hidden="true"><use href="#lf-icon-arrow"/></svg></a>
+    </section>
+
+    <footer class="site-footer home-footer">
+      <div class="home-footer-top">
+        <a class="home-footer-brand" href="/"><img src="legacyfixer-logo.png" alt="" width="38" height="38"> LegacyFixer</a>
+        <nav aria-label="Footer">
+          <a href="/about">About</a>
+          <a href="/demo">Public demo</a>
+          <a href="/guides">Guides</a>
+          <a href="/how-it-works">How it works</a>
+          <a href="/pricing">Pricing</a>
+          <a href="/security">Security</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="/support">Support</a>
+        </nav>
+      </div>
+      <p>© 2026 LegacyFixer · Python dependency security with conservative defaults.</p>
     </footer>
   </main>
 </body>
