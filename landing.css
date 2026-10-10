@@ -90,7 +90,7 @@
 .landing-home .home-demo-results dd {margin:5px 0 0;color:white;font-size:15px;font-weight:750;overflow-wrap:anywhere}
 .landing-home .home-about {display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:24px;padding:22px 30px;border:1px solid #dce9ee;border-radius:18px;background:#edf6fa}
 .landing-home .home-about h2 {margin:0;font-size:24px}
-.landing-home .home-about a {display:inline-flex;align-items:center;gap:8px;color:#0d777a;font-size:14px;font-weight:700;text-decoration:none}
+.landing-home .home-about a {display:inline-flex;align-items:center;gap:9px;color:#0d777a;font-size:clamp(17px,1.8vw,20px);line-height:1.3;font-weight:750;text-decoration:none;max-width:330px}
 .landing-home .home-about a .home-icon {width:16px;height:16px}
 .landing-home .home-footer {margin:0;padding:26px 0 32px;border-top:1px solid #dbe5ec}
 .landing-home .home-footer-top {display:flex;justify-content:space-between;align-items:center;gap:25px;flex-wrap:wrap}
@@ -131,3 +131,9 @@
   .landing-home .home-primary-cta,.landing-home .home-secondary-cta,.landing-home .home-demo-link {transition:background .18s ease,transform .18s ease}
   .landing-home .home-primary-cta:hover,.landing-home .home-secondary-cta:hover,.landing-home .home-demo-link:hover {transform:translateY(-2px)}
 }
+
+/* Compact, semantically distinct onboarding marks. */
+.landing-home .tile-github {background:#e3eaff;color:#162b4a}
+.landing-home .home-github-mark {fill:currentColor;stroke:none}
+.landing-home .home-onboarding-steps .home-icon-tile .home-icon {width:22px;height:22px}
+@media(max-width:720px) {.landing-home .home-about a {max-width:none;font-size:17px}}
