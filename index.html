@@ -13,6 +13,8 @@
 </head>
 <body class="landing-home">
   <svg aria-hidden="true" class="landing-icon-defs" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="lf-icon-github" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 .297a12 12 0 0 0-3.793 23.384c.6.111.82-.261.82-.577v-2.234c-3.338.726-4.043-1.416-4.043-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.304-5.466-1.333-5.466-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.52 11.52 0 0 1 12 6.104c1.02.005 2.047.138 3.006.404 2.29-1.552 3.295-1.23 3.295-1.23.655 1.652.243 2.873.12 3.176.77.84 1.235 1.91 1.235 3.221 0 4.61-2.803 5.624-5.475 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.216.694.825.576A12.001 12.001 0 0 0 12 .297Z"/></symbol>
+    <symbol id="lf-icon-run" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m10 8 6 4-6 4z"/></symbol>
     <symbol id="lf-icon-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 5 5"/></symbol>
     <symbol id="lf-icon-branch" viewBox="0 0 24 24"><circle cx="6" cy="5" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="6" cy="19" r="2"/><path d="M6 7v10M18 9v3a7 7 0 0 1-7 7H8"/></symbol>
     <symbol id="lf-icon-settings" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2" fill="currentColor" stroke="none"/><circle cx="16" cy="12" r="2" fill="currentColor" stroke="none"/><circle cx="8" cy="18" r="2" fill="currentColor" stroke="none"/></symbol>
@@ -50,7 +52,6 @@
           </p>
           <div class="hero-actions">
             <a class="install-button home-primary-cta" href="https://app.legacyfixer.ai/app">Start free trial <svg class="home-icon" aria-hidden="true"><use href="#lf-icon-arrow"/></svg></a>
-            <a class="home-secondary-cta" href="/demo">View public demo <svg class="home-icon" aria-hidden="true"><use href="#lf-icon-arrow"/></svg></a>
           </div>
           <ul class="home-trial-facts" aria-label="Trial details">
             <li><svg class="home-icon" aria-hidden="true"><use href="#lf-icon-check"/></svg> 7-day trial</li>
@@ -75,7 +76,6 @@
             <svg class="home-icon" aria-hidden="true"><use href="#lf-icon-shield"/></svg>
             <span>Findings recorded. No repository changes in passive mode.</span>
           </div>
-          <a class="home-preview-link" href="/demo">Inspect the real historical result <svg class="home-icon" aria-hidden="true"><use href="#lf-icon-arrow"/></svg></a>
         </aside>
       </div>
     </section>
@@ -105,13 +105,13 @@
       <ol class="home-onboarding-steps">
         <li>
           <span class="step-number">1</span>
-          <div class="home-icon-tile tile-blue"><svg class="home-icon" aria-hidden="true"><use href="#lf-icon-branch"/></svg></div>
+          <div class="home-icon-tile tile-github"><svg class="home-icon home-github-mark" aria-hidden="true"><use href="#lf-icon-github"/></svg></div>
           <strong>Sign in with GitHub</strong>
           <span>Create your workspace and connect selected Python repositories.</span>
         </li>
         <li>
           <span class="step-number">2</span>
-          <div class="home-icon-tile tile-teal"><svg class="home-icon" aria-hidden="true"><use href="#lf-icon-search"/></svg></div>
+          <div class="home-icon-tile tile-teal"><svg class="home-icon" aria-hidden="true"><use href="#lf-icon-run"/></svg></div>
           <strong>Run passive scans first</strong>
           <span>Record vulnerability findings without opening a pull request.</span>
         </li>
