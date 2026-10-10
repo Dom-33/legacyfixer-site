@@ -37,13 +37,9 @@
         LegacyFixer scans selected Python repositories, records dependency-security results,
         and creates review-ready pull requests only when repository settings explicitly allow it.
       </p>
-      <p class="subtitle">
-        <strong>Service status:</strong> LegacyFixer is temporarily unavailable while the service is paused for maintenance.
-        The public demo snapshot and technical guides remain available.
-      </p>
       <div class="hero-actions">
-        <a class="install-button" href="#public-demo">
-          Review demo snapshot
+        <a class="install-button" href="https://app.legacyfixer.ai/app">
+          Start free trial
         </a>
        </div>
     </section>
@@ -68,10 +64,10 @@
         <h2>Start free trial</h2>
         <p>
           LegacyFixer is available as a self-service GitHub App for selected Python repositories.
-          Start with GitHub, connect repositories, and run passive dependency-security scans during a 7-day trial.
+          Start with GitHub and run passive dependency-security scans during a 7-day trial, with up to 3 connected repositories. The trial expires after 7 days even if only one repository has been connected.
         </p>
         <p>
-          Start with <a href="https://app.legacyfixer.ai/app">Sign in with GitHub</a>. During trial, you can connect up to 3 repositories. Passive scans are available first; pull requests are created only when repository settings explicitly allow them.
+          Start with <a href="https://app.legacyfixer.ai/app">Sign in with GitHub</a>. Passive scans are available first; pull requests are created only when repository settings explicitly allow them.
         </p>
         <p>
           You can remove access at any time from GitHub settings by uninstalling the GitHub App or changing repository access.
@@ -117,17 +113,16 @@
     <section id="public-demo" class="scan-example demo-section">
       <div class="demo-layout">
         <div class="demo-copy">
-          <h2>Review the demo snapshot</h2>
+          <h2>Review the public demo</h2>
           <p>
-            Review a previously validated passive LegacyFixer scan snapshot.
-            The live read-only status page is unavailable while the service is paused.
-            This snapshot shows the recommended first onboarding path: scan, record findings,
-            and avoid pull request creation until the result is reviewed.
+            Explore a verified historical passive scan before connecting a repository.
+            The read-only example shows recorded findings and why no pull request was created.
+            This snapshot is not a live scan.
           </p>
-          <div class="demo-link-card" aria-label="Previously validated passive scan snapshot">
-            <span>Previously validated passive scan</span>
-            <strong>Successful scan with findings and no PR opened</strong>
-          </div>
+          <a class="demo-link-card" href="/demo">
+            <span>Explore verified read-only scan example</span>
+            <strong>Historical passive result · 23 reported vulnerabilities · no PR opened</strong>
+          </a>
         </div>
 
         <div class="demo-snapshot">
@@ -138,13 +133,15 @@
             <div><dt>Result</dt><dd>NO_ACTION</dd></div>
             <div><dt>Reason</dt><dd>passive_findings</dd></div>
             <div><dt>PR opened</dt><dd>no</dd></div>
-            <div><dt>Run time</dt><dd>21s</dd></div>
+            <div><dt>Run time</dt><dd>1m 50s</dd></div>
           </dl>
         </div>
       </div>
     </section>
     <footer class="site-footer">
       <nav aria-label="Footer">
+        <a href="/about">About</a>
+        <a href="/demo">Public demo</a>
         <a href="/guides">Guides</a>
         <a href="/how-it-works">How it works</a>
         <a href="/pricing">Pricing</a>
