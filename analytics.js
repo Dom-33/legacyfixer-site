@@ -171,16 +171,9 @@
     buildControls();
     if (location.hostname === "app.legacyfixer.ai" &&
         location.pathname === "/app") {
-      var query = new URLSearchParams(location.search);
-      var loginSucceeded = query.get("login_success") === "1";
-      var repoConnected = query.get("connect_success") === "1";
-      if (loginSucceeded || repoConnected) {
-        // Remove success flags and IDs from address bar after the page was rendered.
-        // The event itself sends no identifiers, and reload cannot replay it.
-        history.replaceState(null, "", location.pathname);
-        if (loginSucceeded) window.LegacyFixerAnalytics.track("login");
-        if (repoConnected) window.LegacyFixerAnalytics.track("repo_connected");
-      }
+      var conversion = document.body.getAttribute("data-lf-conversion");
+      if (conversion === "login" || conversion === "repo_connected")
+        window.LegacyFixerAnalytics.track(conversion);
     }
     if (state === "granted") beginAnalytics();
     else if (state !== "denied") showPrompt();
