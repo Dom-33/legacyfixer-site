@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HY4QRXMJ5P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HY4QRXMJ5P');
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore a verified historical passive Python dependency-security scan in LegacyFixer. Read-only example, no account required.">
+  <link rel="canonical" href="https://legacyfixer.ai/demo">
+  <title>Public scan example — LegacyFixer</title>
+  <link rel="icon" type="image/png" href="legacyfixer-logo.png">
+  <link rel="stylesheet" href="style.css?v=pricing-v1-20260818">
+</head>
+<body>
+  <main class="page legal-page">
+    <section class="legal-header">
+      <div class="brand-lockup">
+        <img class="brand-logo" src="legacyfixer-logo.png" alt="LegacyFixer logo" width="54" height="54">
+        <p class="eyebrow">Legacy<span>Fixer</span></p>
+      </div>
+      <h1>Public scan example</h1>
+      <p class="subtitle">A verified historical result from a passive scan, showing what LegacyFixer records before any pull request is enabled.</p>
+    </section>
+
+    <section class="legal-card" aria-label="Example disclosure">
+      <h2>Historical, read-only example</h2>
+      <p>This is a snapshot of a controlled LegacyFixer run completed on <strong>June 10, 2026</strong>, not a live scan. Repository identifiers and sensitive diagnostic output are intentionally omitted. The actual self-service application requires GitHub sign-in to protect each workspace's data.</p>
+      <p><a href="https://app.legacyfixer.ai/app">Open the working LegacyFixer application (GitHub sign-in required)</a></p>
+    </section>
+
+    <section class="legal-card">
+      <h2>Recorded scan result</h2>
+      <dl class="scan-status">
+        <div><dt>Run</dt><dd>#88</dd></div>
+        <div><dt>Scan date</dt><dd>2026-06-10</dd></div>
+        <div><dt>Status</dt><dd>success</dd></div>
+        <div><dt>Result</dt><dd>NO_ACTION</dd></div>
+        <div><dt>Reason</dt><dd>passive_findings</dd></div>
+        <div><dt>Pull requests opened</dt><dd>0</dd></div>
+        <div><dt>Dependency findings</dt><dd>23 reported</dd></div>
+        <div><dt>Affected packages</dt><dd>1</dd></div>
+      </dl>
+      <p>The worker completed this passive scan and recorded dependency findings. <strong>NO_ACTION</strong> refers to no remediation being performed, not to an absence of security findings.</p>
+    </section>
+
+    <section class="legal-card">
+      <h2>Explore the recorded findings</h2>
+      <details open>
+        <summary><strong>Dependency audit — 23 vulnerabilities reported</strong></summary>
+        <p>The scan reported 23 known vulnerabilities in one affected package: <code>django==5.2.11</code>. At the time, available fix-version candidates included 5.2.13, 5.2.14, and 5.2.15. This historical result does not represent current vulnerability or remediation status.</p>
+      </details>
+      <details>
+        <summary><strong>Repository and execution context</strong></summary>
+        <p>The validation repository used a non-standard default branch, <code>main-616</code>. LegacyFixer detected that branch, ran the passive dependency audit, and persisted the result. The recorded execution lasted 1 minute 50 seconds.</p>
+      </details>
+      <details>
+        <summary><strong>Why no pull request was opened</strong></summary>
+        <p>This repository was configured for passive scanning. Findings were recorded, but automatic remediation was not authorized. When enabled per repository, LegacyFixer can instead propose a fix through a reviewable pull request; it does not auto-merge.</p>
+      </details>
+    </section>
+
+    <section class="legal-card">
+      <h2>Try LegacyFixer with your own repository</h2>
+      <p>Sign in with GitHub, choose the repositories to connect, and review scan outcomes in your private workspace. The free trial lasts 7 days and supports up to 3 connected repositories.</p>
+      <p><a class="install-button" href="https://app.legacyfixer.ai/app">Start free trial</a></p>
+    </section>
+
+    <p class="legal-back">
+      <a href="/">Back to LegacyFixer</a>
+      &middot;
+      <a href="/about">About the project</a>
+      &middot;
+      <a href="/how-it-works">How it works</a>
+    </p>
+  </main>
+</body>
+</html>
