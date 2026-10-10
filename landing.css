@@ -96,8 +96,9 @@
 .landing-home .home-footer-top {display:flex;justify-content:space-between;align-items:center;gap:25px;flex-wrap:wrap}
 .landing-home .home-footer-brand {display:flex;align-items:center;gap:10px;color:#079f9b;font-size:19px;font-weight:850;text-decoration:none}
 .landing-home .home-footer-brand img {border-radius:9px}
-.landing-home .home-footer nav {display:flex;gap:11px 16px;margin:0}
-.landing-home .home-footer nav a {font-size:13px}
+.landing-home .home-footer nav {display:flex;align-items:baseline;gap:11px 16px;margin:0}
+.landing-home .home-footer nav a,.landing-home .home-footer nav #lf-consent-manage {font-family:inherit;font-size:13px;font-weight:800;line-height:1.4}
+.landing-home .home-footer nav #lf-consent-manage {appearance:none;display:inline;padding:0;margin:0;border:0;background:transparent;color:var(--accent-dark);cursor:pointer}
 .landing-home .home-footer p {margin-top:12px;font-size:13px}
 @media(max-width:1000px) {
   .landing-home .home-topbar {flex-wrap:wrap;padding-bottom:32px}
