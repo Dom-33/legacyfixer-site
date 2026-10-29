@@ -13,6 +13,9 @@
     <loc>https://legacyfixer.ai/guides</loc>
   </url>
   <url>
+    <loc>https://legacyfixer.ai/guides/urllib3-cve-2026-97689-python-security-scan</loc>
+  </url>
+  <url>
     <loc>https://legacyfixer.ai/guides/brotli-cve-2026-111497-python-security-scan</loc>
   </url>
   <url>
